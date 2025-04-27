@@ -4,7 +4,7 @@ This repository provides the source code for the Graphical User Interface (GUI) 
 
 ## Description
 
-GUI and workflow for detecting stress regions within the rosette area (see Figure 1):  –
+GUI and workflow for detecting stress regions within the rosette area (see Figure 1):  
 The figure below shows an example of the main page of the developed GUI, along with an example of an input segmented image and the corresponding output image with detected stress regions. The figure also presents the output of healthy and stressed rosette areas for two _A. thaliana_ ecotypes.
 
 ![image](image/img_ex112.png)
