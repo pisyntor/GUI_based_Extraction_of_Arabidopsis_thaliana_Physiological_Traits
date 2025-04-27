@@ -1,15 +1,15 @@
-# Computer-based Recognition of Arabidopsis thaliana Ecotypes
+# GUI-based extraction and analysis of Arabidopsis thaliana physiological traits 
 
-This repository provides the full source code developed to classify various A. thaliana ecotypes using an RGB image analysis pipeline. This pipeline operates with a large volume of data collected by an X-Y indoor HTPP system.
+This repository provides the source code for the Graphical User Interface (GUI) developed to automatically detect stress regions on the _A. thaliana_ canopy and to analyse healthy and stressed areas, including their dominant colours.
 
 ## Description
 
-The RGB image analysis pipeline consists of several elements (see Figure 1):
-A – Collection of RGB image data in an indoor HTPP environment, B – Preparation and organization of the data using auto-pot and auto-cropping procedures, C – Assessment of complexity (variability) within generated datasets, D – Data re-definition sub-component composed of GUI-based image processing and three levels of transformation, E – Partitioning data into training, validation, and test sets, F – Data augmentation using random affine transformations, G – Auto-optimization sub-system that performs single-image and sequence-of-images classification, H – Storage of the best-performing deep learning models, I –Inferencing on test data as well as J – externally sourced data,  K – Visualization of critical regions using heat and saliency maps.
+GUI and workflow for detecting stress regions within the rosette area (see Figure 1):  –
+The figure below shows an example of the main page of the developed GUI, along with an example of an input segmented image and the corresponding output image with detected stress regions. The figure also presents the output of healthy and stressed rosette areas for two _A. thaliana_ ecotypes.
 
-![image](image/ex_GUI_flow.png)
+![image](image/img_ex112.png)
 
-**Figure 1**. The complete workflow of the developed RGB image analysis pipeline for the recognition of various Arabidopsis ecotypes.
+**Figure 1**. The workflow of the developed GUI for stress detection and colour analysis for _A.thaliana_ plants
 
 ## Requirements
 - [python>=3.7](https://www.python.org/downloads/)
@@ -22,7 +22,7 @@ A – Collection of RGB image data in an indoor HTPP environment, B – Preparat
 
 ## Structure
 The fundamental filesystem structure resembles the tree shown below. Essentially, we have two main folders: ```code```.
-```
+```console
 code
 ├───analyzer.py
 ├───displaybox.py
