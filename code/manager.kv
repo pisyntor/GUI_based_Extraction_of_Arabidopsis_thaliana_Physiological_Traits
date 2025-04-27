@@ -1,0 +1,49 @@
+#: import inputbox inputbox
+#: import listbox listbox
+#: import displaybox displaybox
+#: import settingbox settingbox
+
+<Manager>:
+
+    orientation : 'vertical'
+    leftBox : left_box
+    listBox : list_box
+    settingBox : setting_box
+    displayBox : display_box
+    
+    BoxLayout:
+
+        size_hint: (1, None)
+        height: dp(100)
+        
+        InputBox:
+            id : input_box
+            list_box : list_box
+            setting_box : setting_box
+            display_box : display_box
+            size_hint: (1, 0.95)
+
+    BoxLayout: 
+        
+        orientation: 'horizontal'
+        
+        BoxLayout: 
+            id : left_box
+            orientation : 'vertical'
+            size_hint : (0.8,1)
+
+            ListBox:
+                id : list_box
+                input_box : input_box
+                setting_box : setting_box
+                display_box : display_box
+                
+            
+            SettingBox:
+                id : setting_box
+                input_box : input_box
+                list_box : list_box
+                
+
+        DisplayBox:
+            id : display_box

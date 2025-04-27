@@ -1,0 +1,8 @@
+Pillow 
+numpy 
+opencv-python 
+scikit-learn 
+tkcalendar 
+matplotlib 
+kivy 
+kivymd

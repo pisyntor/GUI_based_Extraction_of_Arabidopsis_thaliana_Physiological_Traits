@@ -1,0 +1,158 @@
+<ListBox>:
+
+    eco_selection_list : eco_selection_list
+    rep_selection_list : rep_selection_list
+    img_selection_list : img_selection_list
+    eco_selection_scroll : eco_selection_scroll
+    img_scroll : img_scroll
+
+    size_hint: 1, 1
+    
+    canvas:
+        Color:
+            rgb: 0.25, 0.25, 0.25
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    ScrollView:
+        id : eco_selection_scroll
+        do_scroll_y : True if eco_selection_list.height > self.height else False 
+        do_scroll_x : False
+        scroll_type : ['bars', 'content']
+        size_hint : (0.28, 0.85)
+        pos_hint : {'center_x':0.18, 'center_y': 0.47}
+        # size : (dp(150), dp(250))
+        bar_width : dp(10)
+        bar_color : (0.2,0.64,0.8,1)
+        bar_inactive_color : (0.2,0.64,0.8,1)
+        canvas.before:
+            Color:
+                rgb : (1,1,1)
+            Rectangle:
+                size : self.size
+                pos : self.pos
+
+        EcoListLayout:
+            id: eco_selection_list
+            scroll : eco_selection_scroll
+            # Give a reference of the root class to this layout
+            list_box : root
+            rep_selection_list : rep_selection_list
+            rep_selection_scroll : replicate_selection_scroll
+            cols:1
+            size_hint_y : None
+            height : self.minimum_height
+            multiselect: False
+
+    Label:
+        id: lbl_eco_selection
+        color: (1, 1, 1)
+        text: '[b]Ecotypes[/b]'
+        size_hint: None, None
+        size : dp(85), dp(20)
+        text_size : self.size
+        halign : 'left'
+        valign : 'middle'
+        font_size: dp(14)
+        font_family: "arial"
+        markup: True
+        x: eco_selection_scroll.x
+        y : eco_selection_scroll.top + dp(4)
+
+    ScrollView:
+        id : replicate_selection_scroll
+        do_scroll_y : True if rep_selection_list.height > self.height else False
+        do_scroll_x : False
+        scroll_type : ['bars', 'content']
+        size_hint : (0.28, 0.85)
+        pos_hint : {'center_x':0.5, 'center_y': 0.47}
+        bar_width : dp(10)
+        bar_color : (0.2,0.64,0.8,1)
+        bar_inactive_color : (0.2,0.64,0.8,1)
+        canvas.before:
+            Color:
+                rgb : (1,1,1)
+            Rectangle:
+                size : self.size
+                pos : self.pos
+
+        RepListLayout:
+            id: rep_selection_list
+            scroll : replicate_selection_scroll
+            # Give a reference of the root class to this layout
+            list_box : root
+            img_selection_list : img_selection_list
+            img_scroll : img_scroll
+            cols:1
+            size_hint_y : None
+            height : self.minimum_height
+            multiselect: True
+
+    Label:
+        id: lbl_replicate_selection
+        color: (1, 1, 1)
+        text: '[b]Replicate[/b]'
+        size_hint: None, None
+        size : dp(85), dp(20)
+        text_size : self.size
+        halign : 'left'
+        valign : 'middle'
+        font_size: dp(14)
+        font_family: "arial"
+        markup: True
+        x: replicate_selection_scroll.x
+        y : replicate_selection_scroll.top + dp(4)
+
+    ScrollView:
+        id : img_scroll
+        do_scroll_y : True if img_selection_list.height > self.height else False 
+        do_scroll_x : False
+        scroll_type : ['bars', 'content']
+        size_hint : (0.28, 0.85)
+        pos_hint : {'center_x':0.82, 'center_y': 0.47}
+        bar_width : dp(10)
+        bar_color : (0.2,0.64,0.8,1)
+        bar_inactive_color : (0.2,0.64,0.8,1)
+        canvas.before:
+            Color:
+                rgb : (1,1,1)
+            Rectangle:
+                size : self.size
+                pos : self.pos
+
+        ImgListLayout:
+            id: img_selection_list
+            scroll : img_scroll
+            # Give a reference of the root class to this layout
+            list_box : root
+            eco_selection_list : eco_selection_list
+            rep_selection_list : rep_selection_list
+            cols:1
+            size_hint_y : None
+            height : self.minimum_height
+            multiselect: False
+            
+    Label:
+        id: lbl_image_scroll
+        color: (1, 1, 1)
+        text: '[b]Data[/b]'
+        size_hint: None, None
+        size : dp(150), dp(20)
+        text_size : self.size
+        halign : 'left'
+        valign : 'middle'
+        font_size: dp(14)
+        font_family: "arial"
+        markup: True
+        x: img_scroll.x
+        y : img_scroll.top + dp(4)
+
+<MyListItem>:
+    size_hint: (1, None)
+    height: dp(20)
+    halign: 'left'
+    text_size: self.size
+    color: (0,0,0)
+    font_size: dp(14)
+    font_family: "arial"

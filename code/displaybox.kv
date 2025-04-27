@@ -1,0 +1,55 @@
+<DisplayBox>:
+
+    main_image : main_image
+    top_image : top_image
+    bottom_image : bottom_image
+    left_image : left_image
+    right_image : right_image
+
+    orientation: 'vertical'
+    
+    FloatLayout:
+
+        id: display_float
+        size_hint: (1, 1)
+        canvas.before:
+            Color:
+                rgb: 0.45, 0.45, 0.45
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        
+        MainImage:
+            id: main_image
+            size_hint: (0.9, 0.9)
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            fit_mode: 'contain'
+        
+        MainImage:
+            id: bottom_image
+            size_hint: (1, 0.46)
+            pos_hint: {'center_x': 0.5, 'center_y': 0.26}
+            y : display_float.y
+            fit_mode: 'contain'
+
+        MainImage:
+            id: top_image
+            size_hint: (1, 0.46)
+            pos_hint: {'center_x': 0.5, 'center_y': 0.74}
+            y : bottom_image.top
+            fit_mode: 'contain'
+
+        MainImage:
+            id: left_image
+            size_hint: (0.46, 1)
+            pos_hint: {'center_x': 0.26, 'center_y': 0.5}
+            y : display_float.y
+            fit_mode: 'contain'
+
+        MainImage:
+            id: right_image
+            size_hint: (0.46, 1)
+            pos_hint: {'center_x': 0.74, 'center_y': 0.5}
+            y : bottom_image.top
+            fit_mode: 'contain'
+        

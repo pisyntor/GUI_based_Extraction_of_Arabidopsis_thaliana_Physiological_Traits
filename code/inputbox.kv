@@ -1,0 +1,205 @@
+<InputBox>
+    
+    txt_root_input : txt_root_input
+    btn_root_browse : btn_root_browse
+    txt_output_path : txt_output_path
+    btn_output_browse : btn_output_browse
+    tgl_main : main_toggle
+    tgl_colour_analysis : color_analysis_toggle
+    tgl_healthy : healthy_stress_toggle
+    chk_dataset_1 : chk_dataset_1
+    chk_dataset_2 : chk_dataset_2
+
+    canvas:
+        Color:
+            rgb: 0.2, 0.2, 0.2
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    FloatLayout:
+        id: left_float
+        size_hint :(0.62, 1)
+        x: root.x
+        y: root.y
+
+        Label:
+            id: lbl_root_input
+            # color: (0.2, 0.2, 0.2)
+            text: '[b]Root Folder[/b]'
+            size_hint: None, None
+            size : dp(80), dp(25)
+            text_size : self.size
+            halign : 'left'
+            valign : 'middle'
+            font_size: dp(14)
+            font_family: "arial"
+            markup: True
+            x: root.x + dp(20)
+            top: root.top - dp(15)
+
+        TextInput:
+            id: txt_root_input
+            text: root.input_root_dir
+            size_hint: (0.77, None)
+            height: dp(25)
+            background_color: 1, 1, 1
+            multiline : False
+            font_size: dp(14)
+            font_family: "arial"
+            hint_text: "Root Folder"
+            #x: lbl_root_input.right
+            pos_hint: {'center_x': 0.52}
+            center_y: lbl_root_input.center_y
+        
+        Button:
+            id: btn_root_browse
+            size_hint: None, None
+            size: dp(60), dp(25)
+            text: 'Browse'
+            font_size: dp(14)
+            # x: txt_root_input.right + dp(10)
+            pos_hint : {'right':0.995}
+            center_y: lbl_root_input.center_y
+            on_press: root.button_press_callback(self)
+            on_release: root.button_release_callback(self)
+
+        Label:
+            id: lbl_output_path
+            # color: (0.2, 0.2, 0.2)
+            text: '[b]Output Path[/b]'
+            size_hint: None, None
+            size : dp(80), dp(25)
+            text_size : self.size
+            halign : 'left'
+            valign : 'middle'
+            font_size: dp(14)
+            font_family: "arial"
+            markup: True
+            x: root.x + dp(20)
+            top: lbl_root_input.y - dp(15)
+
+        TextInput:
+            id: txt_output_path
+            text: root.output_dir
+            size_hint: (0.77, None)
+            height: dp(25)
+            background_color: 1, 1, 1
+            multiline : False
+            font_size: dp(14)
+            font_family: "arial"
+            hint_text: "Output Path"
+            #x: lbl_output_path.right
+            pos_hint: {'center_x': 0.52}
+            center_y: lbl_output_path.center_y
+        
+        Button:
+            id: btn_output_browse
+            size_hint: None, None
+            size: dp(60), dp(25)
+            text: 'Browse'
+            font_size: dp(14)
+            #x: txt_output_path.right + dp(10)
+            pos_hint : {'right':0.995}
+            center_y: lbl_output_path.center_y
+            on_press: root.button_press_callback(self)
+            on_release: root.button_release_callback(self)
+
+
+    FloatLayout:
+        size_hint :(0.38, 1)
+        x: left_float.right
+        y: root.y
+
+        CustomToggle:
+            id: main_toggle
+            group: 'display_menu'
+            text: "Main"
+            font_size: dp(14)
+            size_hint: (None, None)
+            size: (dp(120), dp(35))
+            pos_hint : {'center_x': 0.2, 'center_y': 0.30}
+            state: 'down'
+            on_press: root.button_press_callback(self)
+            on_release: root.button_release_callback(self)
+            background_color : (1, 1, 1, 1)
+        
+        CustomToggle:
+            id: healthy_stress_toggle
+            group: 'display_menu'
+            text: "Healthy vs. Stess"
+            font_size: dp(14)
+            size_hint: (None, None)
+            size: (dp(120), dp(35))
+            pos_hint : {'center_x': 0.5, 'center_y': 0.30}
+            #x : main_toggle.right + dp(20)
+            #center_y : root.center_y
+            on_press: root.button_press_callback(self)
+            on_release: root.button_release_callback(self)
+
+        CustomToggle:
+            id: color_analysis_toggle
+            group: 'display_menu'
+            text: "Colour Analysis"
+            font_size: dp(14)
+            size_hint: (None, None)
+            size: (dp(120), dp(35))
+            #x : healthy_stress_toggle.right + dp(20)
+            #center_y : root.center_y
+            pos_hint : {'center_x': 0.81, 'center_y': 0.30}
+            on_press: root.button_press_callback(self)
+            on_release: root.button_release_callback(self)
+
+        CustomCheckBox:
+            id: chk_dataset_1
+            group: 'dataset_type'
+            active: True
+            size_hint : (None, None)
+            size : (dp(18), dp(18))
+            x : main_toggle.x
+            top: root.top - dp(15)
+            on_active: root.checkbox_callback(self)
+
+        CustomLabel:
+            id: lbl_dataset_1
+            markup: True
+            color: (1, 1, 1)
+            text: 'Dataset 1'
+            size_hint: None, None
+            size : dp(80), dp(20)
+            text_size : self.size
+            halign : 'left'
+            valign : 'middle'
+            font_size: dp(14)
+            font_family: "arial"
+            x: chk_dataset_1.right + dp(10)
+            center_y : chk_dataset_1.center_y
+            # on_press: root.button_press_callback(self)
+
+        CustomCheckBox:
+            id: chk_dataset_2
+            group: 'dataset_type'
+            size_hint : (None, None)
+            size : (dp(18), dp(18))
+            x : lbl_dataset_1.right + dp(20)
+            top: root.top - dp(15)
+            on_active: root.checkbox_callback(self)
+
+        CustomLabel:
+            id: lbl_dataset_2
+            markup: True
+            color: (1, 1, 1)
+            text: 'Dataset 2'
+            size_hint: None, None
+            size : dp(120), dp(20)
+            text_size : self.size
+            halign : 'left'
+            valign : 'middle'
+            font_size: dp(14)
+            font_family: "arial"
+            x: chk_dataset_2.right + dp(10)
+            center_y : chk_dataset_2.center_y
+            # on_press: root.button_press_callback(self)
+
+
+<CustomLabel@ButtonBehavior+Label>

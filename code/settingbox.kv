@@ -1,0 +1,359 @@
+<SettingBox>:
+
+    chk_segmented : chk_segmented
+    lbl_segmented : lbl_segmented
+    chk_mask : chk_mask
+    lbl_mask : lbl_mask
+    chk_stress : chk_stress
+    lbl_stress : lbl_stress
+    chk_selected_eco : chk_selected_eco
+    chk_all_classes : chk_all_classes
+    btn_sow_date : btn_sow_date
+    btn_screening_date : btn_screening_date
+    btn_experiment_end_date : btn_experiment_end_date
+    btn_reset_selection : btn_reset_selection
+    btn_reset : btn_reset
+    btn_process : btn_process
+    chk_selected_reps : chk_selected_reps
+    txt_selected_reps : txt_selected_reps
+    lbl_selected_eco : lbl_selected_eco 
+    lbl_selected_reps : lbl_selected_reps
+    lbl_all_classes : lbl_all_classes
+    manager : app.manager
+
+    size_hint : (1, None)
+    height: dp(280)
+
+    canvas:
+        Color:
+            rgb: 0.3, 0.3, 0.3
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    Label:
+        id: lbl_capturing_data
+        markup: True
+        color: (1, 1, 1)
+        text: '[b]Capturing Data[/b]'
+        size_hint: None, None
+        size : dp(100), dp(20)
+        text_size : self.size
+        halign : 'left'
+        valign : 'middle'
+        font_size: dp(14)
+        font_family: "arial"
+        x: root.x + dp(20)
+        top: root.top - dp(5)
+
+    Label:
+        id: lbl_sowing_start
+        markup: True
+        color: (1, 1, 1)
+        text: 'Sowing Start:'
+        size_hint: None, None
+        size : dp(120), dp(25)
+        text_size : self.size
+        halign : 'left'
+        valign : 'middle'
+        font_size: dp(14)
+        font_family: "arial"
+        x: root.x + dp(20)
+        top: lbl_capturing_data.y - dp(5)
+
+    Button:
+        id: btn_sow_date
+        size_hint: None, None
+        size: dp(120), dp(25)
+        text: root.sow_date
+        font_size: dp(14)
+        x: lbl_sowing_start.right + dp(10)
+        center_y: lbl_sowing_start.center_y
+        on_press: root.button_press_callback(self)
+        on_release: root.button_release_callback(self)
+
+    Label:
+        id: lbl_screening_date
+        markup: True
+        color: (1, 1, 1)
+        text: 'Screening Date:'
+        size_hint: None, None
+        size : dp(120), dp(25)
+        text_size : self.size
+        halign : 'left'
+        valign : 'middle'
+        font_size: dp(14)
+        font_family: "arial"
+        x: root.x + dp(20)
+        top: lbl_sowing_start.y - dp(5)
+
+    Button:
+        id: btn_screening_date
+        size_hint: None, None
+        size: dp(120), dp(25)
+        text: root.screening_date
+        font_size: dp(14)
+        x: lbl_screening_date.right + dp(10)
+        center_y: lbl_screening_date.center_y
+        on_press: root.button_press_callback(self)
+        on_release: root.button_release_callback(self)
+
+    Label:
+        id: lbl_end_experiment
+        markup: True
+        color: (1, 1, 1)
+        text: 'End of Experiment:'
+        size_hint: None, None
+        size : dp(120), dp(25)
+        text_size : self.size
+        halign : 'left'
+        valign : 'middle'
+        font_size: dp(14)
+        font_family: "arial"
+        x: root.x + dp(20)
+        top: lbl_screening_date.y - dp(5)
+
+    Button:
+        id: btn_experiment_end_date
+        size_hint: None, None
+        size: dp(120), dp(25)
+        text: root.experiment_end_date
+        font_size: dp(14)
+        x: lbl_end_experiment.right + dp(10)
+        center_y: lbl_end_experiment.center_y
+        on_press: root.button_press_callback(self)
+        on_release: root.button_release_callback(self)
+
+    Label:
+        id: lbl_img_type
+        markup: True
+        color: (1, 1, 1)
+        text: '[b]Image Type[/b]'
+        size_hint: None, None
+        size : dp(85), dp(20)
+        text_size : self.size
+        halign : 'left'
+        valign : 'middle'
+        font_size: dp(14)
+        font_family: "arial"
+        x: btn_experiment_end_date.right + dp(80)
+        top: lbl_capturing_data.top
+
+    CustomCheckBox:
+        id: chk_segmented
+        group: 'img_type'
+        active: True
+        size_hint : (None, None)
+        size: (dp(25), dp(25))
+        x: lbl_img_type.x
+        top: lbl_img_type.y - dp(5)
+        on_active: root.checkbox_callback(self)
+
+    CustomLabel:
+        id: lbl_segmented
+        markup: True
+        color: (1, 1, 1)
+        text: 'Segmented'
+        size_hint: None, None
+        size : dp(100), dp(25)
+        text_size : self.size
+        halign : 'left'
+        valign : 'middle'
+        font_size: dp(14)
+        font_family: "arial"
+        x: chk_segmented.right + dp(10)
+        top: lbl_img_type.y - dp(5)
+        on_press: root.button_press_callback(self)
+
+    CustomCheckBox:
+        id: chk_mask
+        group: 'img_type'
+        active: True
+        size_hint : (None, None)
+        size: (dp(25), dp(25))
+        x: lbl_img_type.x
+        top: chk_segmented.y - dp(5)
+        on_active: root.checkbox_callback(self)
+
+    CustomLabel:
+        id: lbl_mask
+        markup: True
+        color: (1, 1, 1)
+        text: 'Mask'
+        size_hint: None, None
+        size : dp(100), dp(25)
+        text_size : self.size
+        halign : 'left'
+        valign : 'middle'
+        font_size: dp(14)
+        font_family: "arial"
+        x: chk_mask.right + dp(10)
+        top: lbl_segmented.y - dp(5)
+        on_press: root.button_press_callback(self)
+
+    CustomCheckBox:
+        id: chk_stress
+        group: 'img_type'
+        active: True
+        size_hint : (None, None)
+        size: (dp(25), dp(25))
+        x: lbl_img_type.x
+        top: chk_mask.y - dp(5)
+        on_active: root.checkbox_callback(self)
+
+    CustomLabel:
+        id: lbl_stress
+        markup: True
+        color: (1, 1, 1)
+        text: 'Stressed Area'
+        size_hint: None, None
+        size : dp(100), dp(25)
+        text_size : self.size
+        halign : 'left'
+        valign : 'middle'
+        font_size: dp(14)
+        font_family: "arial"
+        x: chk_stress.right + dp(10)
+        top: lbl_mask.y - dp(5)
+        on_press: root.button_press_callback(self)
+
+    Label:
+        id: lbl_output
+        markup: True
+        color: (1, 1, 1)
+        text: '[b]Output[/b]'
+        size_hint: None, None
+        size : dp(85), dp(20)
+        text_size : self.size
+        halign : 'left'
+        valign : 'middle'
+        font_size: dp(14)
+        font_family: "arial"
+        x: root.x + dp(20)
+        top: lbl_end_experiment.y - dp(10)
+
+    CustomCheckBox:
+        id: chk_selected_eco
+        group: 'output_radio'
+        active: True
+        size_hint : (None, None)
+        size: (dp(25), dp(20))
+        x: lbl_output.x
+        top: lbl_output.y - dp(5)
+        # on_active: root.checkbox_callback(self)
+
+    CustomLabel:
+        id: lbl_selected_eco
+        markup: True
+        color: (1, 1, 1)
+        text: 'Selected Ecotypes'
+        size_hint: None, None
+        size : dp(120), dp(20)
+        text_size : self.size
+        halign : 'left'
+        valign : 'middle'
+        font_size: dp(14)
+        font_family: "arial"
+        x: chk_selected_eco.right + dp(10)
+        center_y: chk_selected_eco.center_y
+        on_press: root.button_press_callback(self)
+
+    CustomCheckBox:
+        id: chk_all_classes
+        group: 'output_radio'
+        active: True
+        size_hint : (None, None)
+        size: (dp(25), dp(20))
+        x: lbl_selected_eco.right + dp(15)
+        top: lbl_selected_eco.top
+        # on_active: root.checkbox_callback(self)
+
+    CustomLabel:
+        id: lbl_all_classes
+        markup: True
+        color: (1, 1, 1)
+        text: 'All Classes'
+        size_hint: None, None
+        size : dp(120), dp(25)
+        text_size : self.size
+        halign : 'left'
+        valign : 'middle'
+        font_size: dp(14)
+        font_family: "arial"
+        x: chk_all_classes.right + dp(10)
+        center_y: chk_all_classes.center_y
+        on_press: root.button_press_callback(self)
+
+    CheckBox:
+        id: chk_selected_reps
+        active: False
+        size_hint : (None, None)
+        size: (dp(25), dp(25))
+        x: lbl_output.x
+        top: chk_selected_eco.y - dp(10)
+        on_active: root.checkbox_callback(self)
+
+    CustomLabel:
+        id: lbl_selected_reps
+        markup: True
+        color: (1, 1, 1)
+        text: 'Selected Reps'
+        size_hint: None, None
+        size : dp(100), dp(25)
+        text_size : self.size
+        halign : 'left'
+        valign : 'middle'
+        font_size: dp(14)
+        font_family: "arial"
+        x: chk_selected_reps.right + dp(10)
+        center_y: chk_selected_reps.center_y
+        on_press: root.button_press_callback(self)
+
+    TextInput:
+        id: txt_selected_reps
+        size_hint: 0.67, None
+        x: lbl_selected_reps.right + dp(5)
+        center_y: lbl_selected_reps.center_y if self.cursor_row == 0 else lbl_selected_reps.center_y
+        # size: dp(380), dp(40)
+        height : dp(25) if self.cursor_row == 0 else dp(40)
+        background_color: 1, 1, 1, 1
+        multiline : True
+        font_size: dp(14)
+        font_family: "arial"
+        hint_text: "Selected Reps"
+        
+
+    Button:
+        id: btn_reset
+        size_hint: None, None
+        size: dp(120), dp(35)
+        text: 'Reset'
+        font_size: dp(14)
+        right: root.right - dp(25)
+        y: root.y + dp(10)
+        on_press: root.button_press_callback(self)
+        on_release: root.button_release_callback(self)
+
+    Button:
+        id: btn_reset_selection
+        size_hint: None, None
+        size: dp(120), dp(35)
+        text: 'Reset Selection'
+        font_size: dp(14)
+        right: btn_reset.x - dp(5)
+        center_y: btn_reset.center_y
+        on_press: root.button_press_callback(self)
+        on_release: root.button_release_callback(self)
+
+    Button:
+        id: btn_process
+        size_hint: None, None
+        size: dp(120), dp(35)
+        text: 'Process'
+        font_size: dp(14)
+        right: btn_reset_selection.x - dp(5)
+        center_y: btn_reset.center_y
+        on_press: root.button_press_callback(self)
+        on_release: root.button_release_callback(self)
+
+<CustomLabel@ButtonBehavior+Label>
