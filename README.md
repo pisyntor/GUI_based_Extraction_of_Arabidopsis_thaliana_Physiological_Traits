@@ -25,17 +25,11 @@ The fundamental filesystem structure resembles the tree shown below. Essentially
 ```
 code
 ├───analyzer.py
-│
 ├───displaybox.py
-│
 ├───inputbox.py
-│
 ├───listbox.py
-│
 ├───main.py
-│
 ├───manager.py
-│
 └───settingbox.py
 ```
 
